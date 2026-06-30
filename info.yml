@@ -129,7 +129,7 @@ configuration:
                 frame_handles:
                     description: Length of handles to include as part of exported media.
                     type: int
-                    default_value: 10
+                    default_value: 8
 
                 #use_timecode_as_frame_number:
                 #    description: Use timecode frame numbering when exporting frame sequences
