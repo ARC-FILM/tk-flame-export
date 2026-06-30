@@ -52,3 +52,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# arc fork artifacts
+__pycache__/
+*.pyc
+.cached_metadata.pickle
+tk-metadata/
