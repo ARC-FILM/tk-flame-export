@@ -58,3 +58,7 @@ __pycache__/
 *.pyc
 .cached_metadata.pickle
 tk-metadata/
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/tk-flame-export.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
