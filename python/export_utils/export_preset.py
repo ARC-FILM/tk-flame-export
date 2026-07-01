@@ -340,6 +340,7 @@ class ExportPreset(object):
                <name>
                   <framePadding>{FRAME_PADDING}</framePadding>
                   <useTimecode>{USE_TIMECODE}</useTimecode>
+                  <frameIndex>3</frameIndex>
                </name>
                <createOpenClip>
                   <namePattern>{SEGMENT_CLIP_NAME_PATTERN}</namePattern>
