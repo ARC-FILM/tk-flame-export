@@ -26,9 +26,7 @@ Fork-side patches (live on `arc-main`):
 2. `info.yml` — `batch_render_template` fields: drop `segment_name`. The comp is
    one versioned output per shot, no segment.
 3. `info.yml` — `frame_handles` default `10` → `8`.
-5. `python/export_utils/export_preset.py` — inject `<startFrame>1001</startFrame>`
-   and `<frameIndex>3</frameIndex>`; flip `use_timecode_as_frame_number` default
-   to `False`. VERIFY on each re-apply — most drift-prone since v1.11.1.
+5. `python/export_utils/export_preset.py` — `<frameIndex>3</frameIndex>`; VERIFY on each re-apply — most drift-prone since v1.11.1.
 6. `python/export_utils/segment.py` — add `frame_offset` property
    (`sourceIn - startFrame`); subtract it in `cut_in`/`cut_out`/`head_in`/`tail_out`
    to normalise absolute frames to sequence-relative (1001, not 12029320).
