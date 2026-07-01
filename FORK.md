@@ -27,10 +27,9 @@ Fork-side patches (live on `arc-main`):
    one versioned output per shot, no segment.
 3. `info.yml` — `frame_handles` default `10` → `8`.
 5. `python/export_utils/export_preset.py` — `<frameIndex>3</frameIndex>`; VERIFY on each re-apply — most drift-prone since v1.11.1.
-6. `python/export_utils/segment.py` — add `frame_offset` property
-   (`sourceIn - startFrame`); subtract it in `cut_in`/`cut_out`/`head_in`/`tail_out`
-   to normalise absolute frames to sequence-relative (1001, not 12029320).
-   Pairs with patch 5. VERIFY on re-apply.
+6. `python/export_utils/segment.py` — Added `_source_frame_offset()` property and `_normalise()` function to manage cut
+   info to Flow being calculated from timecode-absolute frames rather than sequence/render relative (ie, start at 1001,
+   not 4939493949). Added to properties for `cut_in_frame()`, `cut_out_frame()`, `head_in_frame()` and `tail_out_frame()`
 7. `app.py` + new `arc_batch_patcher.py` — `fix_batch()` runs when
    `batch_version_number == 0`; rewrites batch setup + writefile node XML
    (snapshot library naming, iteration, version-follow, output names/type) and

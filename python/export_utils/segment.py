@@ -205,8 +205,9 @@ class Segment(object):
         this value does not correspond to the value found in the original
         sequence data in flame.
         """
-        return self._get_flame_property("sourceIn") + self._get_flame_property(
-            "handleIn"
+        return self._normalize(
+            self._get_flame_property("sourceIn")
+            + self._get_flame_property("handleIn")
         )
 
     @property
@@ -220,7 +221,7 @@ class Segment(object):
         this value does not correspond to the value found in the original
         sequence data in flame.
         """
-        return (
+        return self._normalize(
             self._get_flame_property("sourceOut")
             - self._get_flame_property("handleOut")
             - 1
@@ -231,14 +232,14 @@ class Segment(object):
         """
         Returns the in frame within the segment, including any handles.
         """
-        return self._get_flame_property("sourceIn")
+        return self._normalize(self._get_flame_property("sourceIn"))
 
     @property
     def tail_out_frame(self):
         """
         Returns the out frame within the segment, including any handles
         """
-        return self._get_flame_property("sourceOut") - 1
+        return self._normalize(self._get_flame_property("sourceOut") - 1)
 
     @property
     def edit_in_timecode(self):
@@ -300,6 +301,22 @@ class Segment(object):
         dictionary can contain.
         """
         return self._flame_data
+
+    @property
+    def _source_frame_offset(self):
+        """
+        Offset between Flame's absolute source frame numbers (timecode) and the actual start frame.
+
+        Flame reads TC as the sourceIn, so 10:00:00:00 would be a crazy high number.
+        Subtracting this rebases it to its render start frame ie 1001
+        """
+        return self._get_flame_property("sourceIn") - self._get_flame_property("startFrame")
+
+    def _normalize(self, source_frame):
+        """
+        Rebase absolute source frame to its render start frame.
+        """
+        return source_frame - self._source_frame_offset
 
     def set_flame_data(self, value):
         """
