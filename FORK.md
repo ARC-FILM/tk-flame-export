@@ -30,11 +30,7 @@ Fork-side patches (live on `arc-main`):
 6. `python/export_utils/segment.py` — Added `_source_frame_offset()` property and `_normalise()` function to manage cut
    info to Flow being calculated from timecode-absolute frames rather than sequence/render relative (ie, start at 1001,
    not 4939493949). Added to properties for `cut_in_frame()`, `cut_out_frame()`, `head_in_frame()` and `tail_out_frame()`
-7. `app.py` + new `arc_batch_patcher.py` — `fix_batch()` runs when
-   `batch_version_number == 0`; rewrites batch setup + writefile node XML
-   (snapshot library naming, iteration, version-follow, output names/type) and
-   backs up originals. Logic lives in the module; `app.py` is reduced to a
-   one-line call.
+7. Add line to `export_preset.py` - Added `<mode>Follow Iteration</mode>` to preset. Nixed arc_batch_patcher logic.
 
 Config-side, NOT in this fork:
 
@@ -47,20 +43,10 @@ Recommended re-apply order: #4 (config) → #1–3 → #7 → #5/#6 (with verifi
 
 ## Tagging & descriptors
 
-- Tag fork releases `v1.11.4-arc.N`. Push tags to origin explicitly:
-  `git push origin v1.11.4-arc.1` (branch pushes don't carry tags).
+- Tag fork releases `v1.11.4-arc.N`.
 - Production config: `git` descriptor pinned to the tag (immutable).
+- May actually just point at cloned repo, but we'll see.
 - While iterating: `dev` descriptor pointing at a local checkout.
-
-## Updating onto a newer upstream release
-
-    git fetch upstream --tags
-    git rebase --onto <new-tag> <old-tag> arc-main
-    # resolve conflicts per-commit; pay attention to patches 5 and 6
-    git tag v<new>-arc.1
-    git push origin arc-main --force-with-lease
-    git push origin v<new>-arc.1
-    # then bump the descriptor version in the studio config
 
 ## info.yml field-spec syntax (reference)
 

@@ -345,6 +345,7 @@ class ExportPreset(object):
                <createOpenClip>
                   <namePattern>{SEGMENT_CLIP_NAME_PATTERN}</namePattern>
                   <version>
+                     <mode>Follow Iteration</mode>  
                      <index>0</index>
                      <padding>{VERSION_PADDING}</padding>
                      <name>v&lt;version&gt;</name>
