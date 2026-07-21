@@ -31,6 +31,8 @@ Fork-side patches (live on `arc-main`):
    info to Flow being calculated from timecode-absolute frames rather than sequence/render relative (ie, start at 1001,
    not 4939493949). Added to properties for `cut_in_frame()`, `cut_out_frame()`, `head_in_frame()` and `tail_out_frame()`
 7. Add line to `export_preset.py` - Added `<mode>Follow Iteration</mode>` to preset. Nixed arc_batch_patcher logic.
+8. Re-implement flame_batch_patcher.py functionality via arc-utils to fix the batch iteration name after publish.
+   Can't do via export templates/regular means.
 
 Config-side, NOT in this fork:
 
