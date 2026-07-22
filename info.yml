@@ -193,3 +193,4 @@ minimum_python_version: "3.9"
 
 # the frameworks required to run this app
 frameworks:
+    - {"name": "tk-framework-arc-utils", "version": "v1.x.x"}
