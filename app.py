@@ -603,6 +603,11 @@ class FlameExport(Application):
                                     shot.batch_version_number,
                                 )
                             )
+                            arc_utils = self.engine.frameworks["tk-framework-arc-utils"].import_module("arc_utils")
+                            batch_patcher = arc_utils.flame_batch_patcher
+                            if shot.batch_version_number == 0:
+                                batch_patcher.patch_batch(shot.batch_path, {"BatchSnapshotLibrary": "<batch name>_flame_comp_v<iteration###>", "BatchIteration": "1"})
+
                         else:
                             sg_batch_data = None
 
