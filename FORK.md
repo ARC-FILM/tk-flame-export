@@ -40,6 +40,7 @@ Config-side, NOT in this fork:
    removed `<publishLinked>` lines). Relocated to `{config}/flame_export_settings.py`
    so it overrides without forking the hook. Apply this one first, before the
    fork patches.
+5. Renamed configs in order of preference (EXR first), enabled hard link logic.
 
 Recommended re-apply order: #4 (config) → #1–3 → #7 → #5/#6 (with verification).
 
